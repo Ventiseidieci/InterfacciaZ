@@ -3,3 +3,4 @@ gcodes/
 gcodes_transformed/
 stl_transformed/
 .vscode/
+.DS_Store
