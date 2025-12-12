@@ -160,22 +160,30 @@ def process_backtransform():
     btn_transf_gcode.config(state="disabled")
     log_status("Ritrasformazione GCode in corso...")
     
-    # Setup parametri GCode Transformer (esempio fisso, idealmente collegare a UI)
+    # 1. Imposta il file di input
     gt.set_file_name(current_gcode_path)
+    
+    # 2. Assicuriamoci che i parametri (angolo) siano gli stessi usati per l'STL!
+    # Nota: Se hai cambiato l'angolo in 'st', dovresti passarlo anche a 'gt'.
+    # gt.set_cone_angle(st.cone_angle) # Decommenta se vuoi sincronizzarli
+    
+    # 3. IMPOSTA LA CARTELLA DI OUTPUT (Cruciale per il salvataggio)
+    output_folder = os.path.join(directory_base, 'gcodes_backtransformed')
+    os.makedirs(output_folder, exist_ok=True)
+    gt.set_output_folder(output_folder)
     
     def thread_task():
         try:
-            gt.start() # Assicurati che backTransformGCode gestisca i path relativi correttamente o usa path assoluti
+            gt.start() 
             root.after(0, lambda: log_status("Ciclo Completo Terminato!"))
-            root.after(0, lambda: messagebox.showinfo("Successo", "Processo completato!"))
+            root.after(0, lambda: messagebox.showinfo("Successo", f"File salvato in:\n{output_folder}"))
         except Exception as e:
             root.after(0, lambda: log_status(f"Errore GCode: {e}"))
+            root.after(0, lambda: messagebox.showerror("Errore", str(e)))
         finally:
              root.after(0, lambda: btn_transf_gcode.config(state="normal"))
 
     run_threaded(thread_task)
-
-
 # --- GUI LAYOUT ---
 root = tk.Tk()
 root.title("InterfacciaZ - Pipeline Completa")
