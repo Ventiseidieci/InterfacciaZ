@@ -57,7 +57,7 @@ stlNewName = tk.StringVar()
 gcodeNewName = tk.StringVar()
 
 # STL PART
-ttk.Button(frmTop, text="seleziona STL", command=open_stl_file).pack(pady=2, padx=2, side=LEFT, fill=X, ipady=1)
+ttk.Button(frmTop, text="seleziona STL", command=open_stl_file, label="inserisci nome file").pack(pady=2, padx=2, side=LEFT, fill=X, ipady=1)
 inputtxt = Entry(frmTop, textvariable=stlNewName)
 inputtxt.pack(side=LEFT, fill=X, padx=2)
 ttk.Button(frmTop, text="Transforma STL", command=lambda:st.start(stlNewName.get())).pack(pady=2, padx=2,side=LEFT, fill=X, ipady=1)
