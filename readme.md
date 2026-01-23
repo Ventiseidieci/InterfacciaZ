@@ -6,7 +6,7 @@ Il seguente tool, basato sulla ricerca eseguita dal canale [CNC Kitchen](https:/
 
 ## Prerequisiti
 
-- Stampante FDM con slicer conico installato (https://www.amazon.it/3DPLady-Stampante-aerografo-rimovibile-compatibile/dp/B09BWTGR3C)
+- Stampante FDM con slicer conico installato (<https://www.amazon.it/3DPLady-Stampante-aerografo-rimovibile-compatibile/dp/B09BWTGR3C>)
 - Python installato con Numpy Stl
 - SuperSlicer installato (comprensivo di gcodeviewer)
 
@@ -19,7 +19,8 @@ L'interfaccia permette di modificare l'angolo di slicing del modello, il fade ba
 È inoltre possibile indicare il punto di partenza sul piano del gcode, indicando in mm lo shift sugli assi X o Y corrispondente.
 Successivamente troviamo le due tab di trasformazione. Il primo punto esegue la prima deformazionio del file STL selezionato, mentre il secondo punto esegue la retro trasformazione del Gcode generato, e quindi pronto per la stampa.
 
-#### La procedura dettagliata è la seguente:
+#### La procedura dettagliata è la seguente
+
 - Prepariamo un corpo con sbalzi importanti sul cad, aggiungendo un piano spesso pochi mm e grande quanto il piatto di stampa (nel nostro caso 300x300mm)(output: 2 corpi distinti)
 - Lo esportiamo in una cartella che chiameremo "STL_trasformazione"
 - Apriamo l'interfaccia "Conic Studio" eseguendola da VScode
